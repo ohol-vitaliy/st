@@ -4,6 +4,8 @@
 
 include config.mk
 
+CC = gcc
+CFLAGS = -Wall -Wunused-function -O2
 SRC = st.c x.c
 OBJ = $(SRC:.c=.o)
 
@@ -35,6 +37,7 @@ dist: clean
 	rm -rf st-$(VERSION)
 
 install: st
+	strip st
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	cp -f st $(DESTDIR)$(PREFIX)/bin
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/st

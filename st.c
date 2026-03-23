@@ -2056,12 +2056,12 @@ strreset(void)
 	};
 }
 
-void
-sendbreak(const Arg *arg)
-{
-	if (tcsendbreak(cmdfd, 0))
-		perror("Error sending break");
-}
+/* void */
+/* sendbreak(const Arg *arg) */
+/* { */
+/* 	if (tcsendbreak(cmdfd, 0)) */
+/* 		perror("Error sending break"); */
+/* } */
 
 void
 tprinter(char *s, size_t len)
@@ -2073,23 +2073,23 @@ tprinter(char *s, size_t len)
 	}
 }
 
-void
-toggleprinter(const Arg *arg)
-{
-	term.mode ^= MODE_PRINT;
-}
+/* void */
+/* toggleprinter(const Arg *arg) */
+/* { */
+/* 	term.mode ^= MODE_PRINT; */
+/* } */
 
-void
-printscreen(const Arg *arg)
-{
-	tdump();
-}
+/* void */
+/* printscreen(const Arg *arg) */
+/* { */
+/* 	tdump(); */
+/* } */
 
-void
-printsel(const Arg *arg)
-{
-	tdumpsel();
-}
+/* void */
+/* printsel(const Arg *arg) */
+/* { */
+/* 	tdumpsel(); */
+/* } */
 
 void
 tdumpsel(void)

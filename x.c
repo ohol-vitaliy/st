@@ -53,12 +53,12 @@ typedef struct {
 /* function definitions used in config.h */
 static void clipcopy(const Arg *);
 static void clippaste(const Arg *);
-static void numlock(const Arg *);
-static void selpaste(const Arg *);
-static void zoom(const Arg *);
-static void zoomabs(const Arg *);
-static void zoomreset(const Arg *);
-static void ttysend(const Arg *);
+/* static void numlock(const Arg *); */
+/* static void selpaste(const Arg *); */
+/* static void zoom(const Arg *); */
+/* static void zoomabs(const Arg *); */
+/* static void zoomreset(const Arg *); */
+/* static void ttysend(const Arg *); */
 
 /* config.h for applying patches and the configuration. */
 #include "config.h"
@@ -157,8 +157,8 @@ static void xhints(void);
 static int xloadcolor(int, const char *, Color *);
 static int xloadfont(Font *, FcPattern *);
 static void xloadfonts(const char *, double);
-static void xunloadfont(Font *);
-static void xunloadfonts(void);
+/* static void xunloadfont(Font *); */
+/* static void xunloadfonts(void); */
 static void xsetenv(void);
 static void xseturgency(int);
 static int evcol(XEvent *);
@@ -178,7 +178,7 @@ static void bpress(XEvent *);
 static void bmotion(XEvent *);
 static void propnotify(XEvent *);
 static void selnotify(XEvent *);
-static void selclear_(XEvent *);
+/* static void selclear_(XEvent *); */
 static void selrequest(XEvent *);
 static void setsel(char *, Time);
 static void mousesel(XEvent *, int);
@@ -279,54 +279,54 @@ clippaste(const Arg *dummy)
 			xw.win, CurrentTime);
 }
 
-void
-selpaste(const Arg *dummy)
-{
-	XConvertSelection(xw.dpy, XA_PRIMARY, xsel.xtarget, XA_PRIMARY,
-			xw.win, CurrentTime);
-}
+/* void */
+/* selpaste(const Arg *dummy) */
+/* { */
+/* 	XConvertSelection(xw.dpy, XA_PRIMARY, xsel.xtarget, XA_PRIMARY, */
+/* 			xw.win, CurrentTime); */
+/* } */
 
-void
-numlock(const Arg *dummy)
-{
-	win.mode ^= MODE_NUMLOCK;
-}
+/* void */
+/* numlock(const Arg *dummy) */
+/* { */
+/* 	win.mode ^= MODE_NUMLOCK; */
+/* } */
 
-void
-zoom(const Arg *arg)
-{
-	Arg larg;
+/* void */
+/* zoom(const Arg *arg) */
+/* { */
+/* 	Arg larg; */
 
-	larg.f = usedfontsize + arg->f;
-	zoomabs(&larg);
-}
+/* 	larg.f = usedfontsize + arg->f; */
+/* 	zoomabs(&larg); */
+/* } */
 
-void
-zoomabs(const Arg *arg)
-{
-	xunloadfonts();
-	xloadfonts(usedfont, arg->f);
-	cresize(0, 0);
-	redraw();
-	xhints();
-}
+/* void */
+/* zoomabs(const Arg *arg) */
+/* { */
+/* 	xunloadfonts(); */
+/* 	xloadfonts(usedfont, arg->f); */
+/* 	cresize(0, 0); */
+/* 	redraw(); */
+/* 	xhints(); */
+/* } */
 
-void
-zoomreset(const Arg *arg)
-{
-	Arg larg;
+/* void */
+/* zoomreset(const Arg *arg) */
+/* { */
+/* 	Arg larg; */
 
-	if (defaultfontsize > 0) {
-		larg.f = defaultfontsize;
-		zoomabs(&larg);
-	}
-}
+/* 	if (defaultfontsize > 0) { */
+/* 		larg.f = defaultfontsize; */
+/* 		zoomabs(&larg); */
+/* 	} */
+/* } */
 
-void
-ttysend(const Arg *arg)
-{
-	ttywrite(arg->s, strlen(arg->s), 1);
-}
+/* void */
+/* ttysend(const Arg *arg) */
+/* { */
+/* 	ttywrite(arg->s, strlen(arg->s), 1); */
+/* } */
 
 int
 evcol(XEvent *e)
@@ -610,11 +610,11 @@ xclipcopy(void)
 	clipcopy(NULL);
 }
 
-void
-selclear_(XEvent *e)
-{
-	selclear();
-}
+/* void */
+/* selclear_(XEvent *e) */
+/* { */
+/* 	selclear(); */
+/* } */
 
 void
 selrequest(XEvent *e)
@@ -1050,27 +1050,27 @@ xloadfonts(const char *fontstr, double fontsize)
 	FcPatternDestroy(pattern);
 }
 
-void
-xunloadfont(Font *f)
-{
-	XftFontClose(xw.dpy, f->match);
-	FcPatternDestroy(f->pattern);
-	if (f->set)
-		FcFontSetDestroy(f->set);
-}
+/* void */
+/* xunloadfont(Font *f) */
+/* { */
+/* 	XftFontClose(xw.dpy, f->match); */
+/* 	FcPatternDestroy(f->pattern); */
+/* 	if (f->set) */
+/* 		FcFontSetDestroy(f->set); */
+/* } */
 
-void
-xunloadfonts(void)
-{
-	/* Free the loaded fonts in the font cache.  */
-	while (frclen > 0)
-		XftFontClose(xw.dpy, frc[--frclen].font);
+/* void */
+/* xunloadfonts(void) */
+/* { */
+/* 	/1* Free the loaded fonts in the font cache.  *1/ */
+/* 	while (frclen > 0) */
+/* 		XftFontClose(xw.dpy, frc[--frclen].font); */
 
-	xunloadfont(&dc.font);
-	xunloadfont(&dc.bfont);
-	xunloadfont(&dc.ifont);
-	xunloadfont(&dc.ibfont);
-}
+/* 	xunloadfont(&dc.font); */
+/* 	xunloadfont(&dc.bfont); */
+/* 	xunloadfont(&dc.ifont); */
+/* 	xunloadfont(&dc.ibfont); */
+/* } */
 
 int
 ximopen(Display *dpy)
